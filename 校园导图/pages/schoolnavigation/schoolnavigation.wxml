@@ -1,0 +1,206 @@
+<view>
+  <view class="top_menu" style="background:{{StyleColor}};">
+    <scroll-view>
+          <view bindtap="Showmarker" class="{{item.id===now_tab?'now':''}}"     data-id="{{item.id}}" wx:for="{{tab}}">{{item.title}}
+          </view>
+    </scroll-view> 
+  </view>
+   <view>
+   <map
+      wx:if="{{2 !== now_tab}}"
+      id="map" 
+      latitude="{{lati}}"
+      longitude="{{long}}"
+      scale="16" 
+      controls="{{controls}}"    
+      show-location
+      bindcontroltap="controltap" 
+      markers="{{markers}}" 
+      bindmarkertap="markertap" 
+      polyline="{{polyline}}" 
+      circles="{{circles}}"
+      class="expect"
+    >
+    </map>
+    <map
+      wx:if="{{2 === now_tab && openBottomPicker === true}}"
+      id="map" 
+      latitude="{{lati}}"
+      longitude="{{long}}"
+      scale="16" 
+      controls="{{controls}}"
+      show-location
+      bindcontroltap="controltap" 
+      markers="{{markers}}" 
+      bindmarkertap="markertap" 
+      polyline="{{polyline}}" 
+      circles="{{circles}}"
+      class="list"
+    >
+    </map>
+    <map
+      wx:if="{{2 === now_tab && openBottomPicker === false}}"
+      id="map" 
+      latitude="{{lati}}"
+      longitude="{{long}}"
+      scale="16" 
+      controls="{{controls}}"
+      show-location
+      bindcontroltap="controltap" 
+      markers="{{markers}}" 
+      bindmarkertap="markertap" 
+      polyline="{{polyline}}" 
+      circles="{{circles}}"
+      class="normal"
+    >
+    </map>
+    <!-- <map id="map" 
+      latitude="{{lati}}"
+      longitude="{{long}}"
+      scale="16" 
+      controls="{{controls}}"    
+      show-location
+      bindcontroltap="controltap" 
+      markers="{{markers}}" 
+      bindmarkertap="markertap" 
+      polyline="{{polyline}}" 
+      circles="{{circles}}"
+      class="{{2===now_tab?'bottom':'expect'}}"
+     >
+    </map> -->
+  </view>
+</view>
+  
+        <view wx:if="{{2 === now_tab }}" style="float:bottom;margin-bottom:0;">
+      <view  class='picker-bottom'  bindtap="onPickBottomClick">
+        <view style="margin-left:100rpx;">共找到"餐饮"相关5个餐厅
+          <image wx:if="{{openBottomPicker === true}}" src="../../imgs/arrow1.png" style="margin-right:50rpx;width:20rpx;height:20rpx;">
+          </image>
+          <image wx:if="{{openBottomPicker === false}}" src="../../imgs/arrow2.png" style="margin-right:50rpx;width:20rpx;height:20rpx;">
+          </image>
+        </view>
+       
+      </view>
+      <scroll-view wx:if="{{ openBottomPicker === true }}" scroll-y class="{{openBottomPicker ? 'slidup' : ''}}">
+        <view style="width:750rpx;height:190rpx;border-bottom: 1px solid #ededed;">
+          <image src="../../imgs/haitang.png" style='width:180rpx;height:120rpx;padding:35rpx;float:left;'></image>
+          <view>
+            <view style="float:left;width:400rpx;" bindtap="store">
+              <view style="margin-bottom:5rpx;margin-top:15rpx;">海棠餐厅</view>
+              <view style='font-size:26rpx;'>
+                <image src="../../imgs/example.png" style='width:30rpx;height:30rpx;'></image>
+                  海棠皇家大酒店，味道棒极了，每次聚会所去的不二之选！是西电学子们的最爱。
+              </view>
+            </view>
+            <image src="../../imgs/there.png" style="float:right;width:100rpx;height:100rpx;margin-top:40rpx;" bindtap='haitang'></image>
+          </view>
+        </view>
+        <view style="width:750rpx;height:190rpx;border-bottom: 1px solid #ededed;">
+          <image src="../../imgs/dingxiang.png" style='width:180rpx;height:120rpx;padding:35rpx;float:left;'></image>
+          <view>
+            <view style="float:left;width:400rpx;" bindtap="store">
+              <view style="margin-bottom:5rpx;margin-top:15rpx;">丁香餐厅</view>
+              <view style='font-size:26rpx;'>
+                <image src="../../imgs/example.png" style='width:30rpx;height:30rpx;'></image>
+                  丁香餐厅，是西电学子们魂牵梦绕的地方，味道只能用陕西话这样形容：嘹咋咧！
+              </view>
+            </view>
+            <image src="../../imgs/there.png" style="float:right;width:100rpx;height:100rpx;margin-top:40rpx;" bindtap="dingxiang"></image>
+          </view>
+        </view>
+        <view style="width:750rpx;height:190rpx;border-bottom: 1px solid #ededed;">
+          <image src="../../imgs/zhuyuan.png" style='width:180rpx;height:120rpx;padding:35rpx;float:left;'></image>
+          <view>
+            <view style="float:left;width:400rpx;" bindtap="store">
+              <view style="margin-bottom:5rpx;margin-top:15rpx;">竹园餐厅</view>
+              <view style='font-size:26rpx;'>
+                <image src="../../imgs/example.png" style='width:30rpx;height:30rpx;'></image>
+                  轻轻地尝一口，还在回味你给过的温柔。我轻轻地尝一口。这香浓的诱惑，我喜欢的样子你都有。
+              </view>
+            </view>
+            <image src="../../imgs/there.png" style="float:right;width:100rpx;height:100rpx;margin-top:40rpx;" bindtap="zhuyuan"></image>
+          </view>
+        </view>
+        <view style="width:750rpx;height:190rpx;border-bottom: 1px solid #ededed;">
+          <image src="../../imgs/xinzong.png" style='width:180rpx;height:120rpx;padding:35rpx;float:left;'></image>
+          <view>
+            <view style="float:left;width:400rpx;" bindtap="store">
+              <view style="margin-bottom:5rpx;margin-top:15rpx;">新综合楼</view>
+              <view style='font-size:26rpx;'>
+                <image src="../../imgs/example.png" style='width:30rpx;height:30rpx;'></image>
+                  论西电餐厅哪家强？当属西电新综合楼！   问西电美食苍茫大地，谁主沉浮？
+              </view>
+            </view>
+            <image src="../../imgs/there.png" style="float:right;width:100rpx;height:100rpx;margin-top:40rpx;" bindtap='xinzong'></image>
+          </view>
+        </view>
+        <view style="width:750rpx;height:190rpx;border-bottom: 1px solid #ededed;">
+          <image src="../../imgs/laozong.png" style='width:180rpx;height:120rpx;padding:35rpx;float:left;'></image>
+          <view>
+            <view style="float:left;width:400rpx;" bindtap="store">
+              <view style="margin-bottom:5rpx;margin-top:15rpx;">老综合楼</view>
+              <view style='font-size:26rpx;'>
+                <image src="../../imgs/example.png" style='width:30rpx;height:30rpx;'></image>
+                  最正宗的陕西口味当属老综合楼。Come on！品尝人间美味，你，值得拥有。
+              </view>
+            </view>
+            <image src="../../imgs/there.png" style="float:right;width:100rpx;height:100rpx;margin-top:40rpx;" bindtap='laozong'></image>
+          </view>
+        </view>
+       </scroll-view>
+
+
+
+
+
+
+        <!-- <cover-view  wx:if="{{openPicker===true}}"  class="{{openPicker ? 'slidup' : ''}}" >
+       
+                              <cover-view  class="menu_father" bindtap="onPickLocation">
+                              位置
+                              </cover-view >
+
+                              <cover-view  class="menu_father" bindtap="onPickSort">
+                                品类
+                              </cover-view>
+                              <cover-view   class="menu_father" bindtap="onPickOrder">
+                                排序
+                              </cover-view>
+
+                              <cover-view wx:if="{{openLocation==true}}" style="margin-top:38px;float:left;width:33%; position: fixed;">
+                                    <cover-view class="menu_son"  bindtap="onPickRestaurant">海棠餐厅</cover-view>
+                                    <cover-view class="menu_son"  bindtap="onPickRestaurant">竹园餐厅</cover-view>
+                                    <cover-view class="menu_son"  bindtap="onPickRestaurant">丁香餐厅</cover-view>
+                                    <cover-view class="menu_son"  bindtap="onPickRestaurant">老综合楼</cover-view>
+                                    <cover-view class="menu_son"  bindtap="onPickRestaurant">新综合楼</cover-view>
+                              </cover-view> 
+                              <cover-view wx:if="{{openSort==true}}" style="margin-top:38px;margin-left:33.33%;width:33%; position: fixed;">
+                                            <cover-view class="menu_son" bindtap="onPickRestaurantClass">快餐便当</cover-view>
+                                            <cover-view class="menu_son" bindtap="onPickRestaurantClass">米粉面馆</cover-view>
+                                            <cover-view class="menu_son" bindtap="onPickRestaurantClass">地方菜系</cover-view>
+                                            <cover-view class="menu_son" bindtap="onPickRestaurantClass">炸鸡小吃</cover-view>
+                                            <cover-view class="menu_son" bindtap="onPickRestaurantClass">夹馍饼类</cover-view>
+                                            <cover-view class="menu_son" bindtap="onPickRestaurantClass">冒菜香锅</cover-view>
+                                            <cover-view class="menu_son" bindtap="onPickRestaurantClass">火锅烧烤</cover-view>
+                                            <cover-view class="menu_son" bindtap="onPickRestaurantClass">饮品甜点</cover-view>
+                                            <cover-view class="menu_son" bindtap="onPickRestaurantClass">西餐料理</cover-view>
+                              </cover-view> 
+                              
+                              <cover-view wx:if="{{openOrder==true}}" style="margin-top:38px;margin-left:66.66%;width:33%; position: fixed;">
+                                            <cover-view class="menu_son" bindtap="onPickRestaurantOrder">好评优先</cover-view>
+                                            <cover-view class="menu_son" bindtap="onPickRestaurantOrder">人气优先</cover-view>
+                              </cover-view> 
+        
+        
+                                            <cover-image src="../../imgs/eat1.png" style="width:750rpx;height:187rpx;">
+                                            </cover-image>
+                                            <cover-image src="../../imgs/eat2.png" style="width:750rpx;height:187rpx;">
+                                            </cover-image>
+                                            <cover-image src="../../imgs/eat3.png" style="width:750rpx;height:187rpx;">
+                                            </cover-image>
+                                              
+         
+        </cover-view> -->
+</view>
+
+

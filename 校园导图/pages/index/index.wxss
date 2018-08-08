@@ -1,0 +1,48 @@
+/**index.wxss**/
+page{
+   overflow:hidden;
+   position:fixed;
+   margin:0px;
+   background-size:100% 100%;
+   /* background-color:#CCEEFF; */
+   background-image:url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532498439592&di=1d4714ab317f937ab51408e84a0a7f91&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201508%2F30%2F20150830100800_yeGMd.jpeg')
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: black;
+}
+
+.usermotto {
+  margin-top:600rpx;
+  border:1px solid  #393739;
+  width: 230rpx;
+  height: 80rpx;
+  border-radius: 5px;
+  text-align:center;
+  position: absolute;
+  vertical-align: middle;
+}
+.motto{
+  font-size:28rpx;
+  font-weight: bold;
+  line-height: 80rpx;
+  color: #393739;
+}
+.author{
+  position:absolute;
+  margin-top:730rpx;
+  font-size:30rpx;
+  float: right;
+}
